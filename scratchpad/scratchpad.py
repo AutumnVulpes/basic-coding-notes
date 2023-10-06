@@ -1,48 +1,18 @@
-print("wow")
-print("u.u")
+class Solution:
+    def findTargetSumWays(self, nums: List[int], target: int) -> int:
+        n_nums = len(nums)
+        total = sum(nums)
+        if abs(target) > total:
+            return 0    
+        
+        dp = [[0 for _ in range(total * 2 + 1)] for i in range(n_nums)]
+        dp[0][0] = 1
 
-# Print index and elements as pairs
-for i, j in enumerate(["a", "b", "c"]):
-    print(i, j)
-
-for i in enumerate(["a", "b", "c"]):
-    print(i)
-
-for i, j in enumerate(["a", "b", "c"]):
-    print(i)
-
-for i, j in enumerate(["a", "b", "c"], 2):
-    print(i, j)
-
-nums = [0, 1, 2, 3]
-print(nums[1:])  # 1, 2, 3
-print(nums[:-1])  # 0, 1, 2
-print(nums[:-2])  # 0, 1
-print(nums[::-1])  # 3, 2, 1, 0
-print(nums[2:3])  # 2
-
-print("---")
-
-# Print range starting from 0 and ending before 10
-# (10 elements)
-for i in range(10):
-    print(i)
-
-print("---")
-
-# Print range starting with 1 and ending right before 3
-for i in range(1, 3):
-    print(i)
-
-print("---")
-
-# Print range starting with 1 and ending right before 10
-# But with step size of 2
-for i in range(0, 10, 2):
-    print(i)
-
-print("---")
-
-# Print each elements
-for i in ['a', 'b', 'c']:
-    print(i)
+        for row in range(1, n_nums + 1):  # row is index + 1
+            for col in range(total * 2 + 1):  # col is current sum
+                if nums[row] <= col:
+                    dp[row][col] = dp[row - 1][col] + dp[row - 1][col - nums[row - 1]]
+                else:
+                    dp[row][col] = dp[row - 1][col]
+        
+        return dp [-1][-1]
