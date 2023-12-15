@@ -1,0 +1,3 @@
+import api
+
+db.push(api.get())
