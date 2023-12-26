@@ -1,6 +1,7 @@
 # This is the code block for creation and comparison of the two type dicitonaries
 
 import csv
+deck = []
 journal = {}
 dupe = {}
 
@@ -15,7 +16,7 @@ for creature in deck:
             dupe[type].append(journal[type])
             journal[type] = creature
 
-# Appending final duplicates to dup, then output as csv
+# Appending final creatures (if any) to dupe, then output as csv
 if len(dupe) == 0:
     print("Congrats, you are a true Volo master with no duplicates!")
 else:
